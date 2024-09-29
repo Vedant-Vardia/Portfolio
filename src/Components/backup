@@ -1,0 +1,194 @@
+import { Canvas } from '@react-three/fiber';
+import React, { useEffect, useRef } from 'react';
+import { Center, Cylinder, useGLTF } from '@react-three/drei';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother);  
+
+
+
+function Model(props) {
+  const { nodes, materials } = useGLTF('/model/untitled.glb');
+  const group = useRef(null);
+
+   
+  useGSAP(()=>{
+        gsap.fromTo("#hello",{
+
+            scale: 1.2,
+        },{
+            scrollTrigger: {
+              trigger:"#trig",
+              start:"center 50%",// Element that triggers the animation // When the top of the trigger element hits the center of the viewport // When the bottom of the trigger element hits the center of the viewport
+              // Add markers for debugging
+              toggleActions: "restart none none reverse",
+            },
+             // Shrink text to 80%
+            
+            y: -100,
+            duration:0.2, // Move text up by 100px
+          });
+
+
+          gsap.fromTo("#hello",{
+
+            scale: 1.2,
+        },{
+            scrollTrigger: {
+              trigger:"#trig2",
+              start:"center 50%",// Element that triggers the animation // When the top of the trigger element hits the center of the viewport // When the bottom of the trigger element hits the center of the viewport
+               // Add markers for debugging
+              toggleActions: "restart none none reverse"
+            },
+ // Shrink text to 80%
+            scale:0.4,
+            duration:0.2,
+          },);
+
+          gsap.fromTo("#hello",{
+          },{
+            scrollTrigger: {
+              trigger:"#trig3",
+              start:"center 50%",
+               
+              toggleActions: "restart none none reverse"
+            },
+            x:20,
+            duration:0.2, 
+          },'a');
+          gsap.to("#shifter",{
+            scrollTrigger:{
+              trigger:"#trig3",
+              start:"center 50%",
+              toggleActions: "restart none none reverse"
+            },
+            duration:0.2, 
+            width:100,
+          },'a')
+
+          gsap.to("#iamt",{
+            scrollTrigger:{
+              trigger:"#trig4",
+              start:"center 50%",
+              toggleActions: "restart none none reverse"
+            },
+            opacity: 1,
+          },'b')
+
+          gsap.to("#aboutt",{
+            scrollTrigger:{
+              trigger:"#trig4",
+              start:"center 50%",
+              toggleActions: "restart none none reverse"
+            },
+            opacity: 1,
+            delay:0.25
+          },'b')
+
+
+          
+
+          gsap.to("#att",{
+            scrollTrigger:{
+              trigger:"#trig4",
+              start:"center 50%",
+              toggleActions: "restart none none reverse"
+            },
+            opacity: 1,
+            delay:0.5
+          },'b')
+        }, []);
+
+
+  useEffect(() => {
+    // Start the rotation animation
+    const rotationAnimation = gsap.to(group.current.rotation, {
+      y: Math.PI * 2,
+      duration: 10, 
+      repeat: -1, 
+      ease: 'linear', 
+    });
+
+    // Cleanup function
+    return () => {
+      // Stop the rotation animation when the component unmounts
+      rotationAnimation.kill();
+    };
+  }, []);
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <mesh 
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder.geometry}
+        material={materials['Material.001']}
+        position={[0, -0.174, 0.641]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={[0.643, 4.892, 0.643]}
+      />
+      
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.MY1.geometry}
+        material={materials.MY1}
+        position={[0.506, -0.486, 1.19]}
+        rotation={[Math.PI / 2, 0, -0.005]}
+        scale={[6.872, 1, 6.102]}
+      />
+      
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.MY2.geometry}
+        material={materials.MY2}
+        position={[0.28, -0.798, 1.29]}
+        rotation={[Math.PI / 2, 0, -3.113]}
+        scale={[5.229, 1.01, 5.192]}
+      />
+      </group> 
+  );
+}
+useGLTF.preload('/model/untitled.glb');
+
+const Hero = () => {
+  return (
+    <div id="comp-cont">
+    <div className='trig bg-[#0E1630] h-[200vh] w-full flex relative overflow-x-hidden'>
+    <div id="shifter" className='bg-[#01D293] fixed h-2  left-[19vw] top-[25vh] z-10'><h1></h1></div>
+    <div id="iam" className='text fixed  raleway-600 top-[28vh] left-[19vw] z-10'>
+      <h1 className='opacity-0 text-4xl text-white' id="iamt">I, am Vedant Vardia</h1>
+      <h3 className='text-xl opacity-0 text-gray-400 text-right' id="aboutt">A full stack developer</h3>
+      </div>
+      <div className='fixed h-[20vh] w-2/5 top-[45vh] left-[12vw] z-9'>
+      <p id="att" className=' opacity-0  raleway-600 left-[12vw] text-xl text-gray-200'>My name is Melissa Rodriguez, and I am writing this letter to express my interest in the Software Developer position at Redshore Digital Creations. I believe that I can offer a significant contribution to your team. My passion for developing efficient, creative software has only grown during my career, and I am excited about the opportunity to showcase my skills.</p>
+      </div>
+      <div className='abc h-[100vh] w-1/2'>
+        <h1 id='hello' className='forum-regular fixed text-[#01D293] text-9xl top-[30vh] left-[20vw]'>Hello</h1>  
+      </div>
+      <div id='rt' className='w-1/2 h-[90vh] fixed left-1/2'>
+        <Canvas className='w-full h-full'>
+                <pointLight
+            castShadow
+            intensity={100.413}
+            decay={2}
+            position={[1.89, 2.814, -0.085]}
+            rotation={[0.650327133, 0.055222218, 1.8570303]}
+          />
+          <ambientLight intensity={1.3} castShadow />
+          <Model />
+        </Canvas>
+      </div>
+      
+    </div>
+    <div id="trig2" className='h-[100vh] bg-[#0E1630]'></div>
+    <div id="trig3" className='h-[100vh] bg-[#0E1630]'></div>
+    <div id="trig4" className='h-[200vh] bg-[#0E1630]'></div>
+    </div>
+  );
+};
+
+export default Hero;

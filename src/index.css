@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.forum-regular {
+    font-family: "Forum", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+/* <uniquifier>: Use a unique and descriptive class name
+ <weight>: Use a value from 100 to 900
+*/
+.raleway-100 {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.raleway-200 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+  .raleway-300 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: bold;
+  }
+  .raleway-600 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .raleway-800 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  
+#nav{
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.h-effect:after{
+    content: "";
+    text-decoration: none;
+    position: absolute;
+    background-color: #01D293;
+    height: 2px;
+    width: 0%;
+    left: 0;
+    bottom: 0px;
+    padding: 0,7px;
+    transition: 0.3s;
+}
+.h-effect:hover{
+    color:#01D293;
+}
+
+.h-effect:hover:after{
+    width:100%;
+}
+
+
+.comp-cont{
+    position:relative;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}
+
+
+#main{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: aquamarine;
+  overflow: hidden;
+}
+
+#top{
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 50vh;
+  background-color: rgb(255, 255, 255);
+  z-index: 9;
+  overflow: hidden;
+}
+
+#center{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  transform-origin: center;
+  background-color: rgb(0, 0, 0);
+  transition: all cubic-bezier(0.19, 1, 0.22, 1)1s;
+  overflow: hidden;
+}
+
+#bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+#main h1{
+  font-family: Founder;
+  font-size: 22vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#top-h1{
+  bottom: 50%;
+}
+
+#bottom-h1{
+  top: 0% !important;
+}
+
+.content{
+  margin-top: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  gap: 4vh;
+}
+
+.content h4{
+  font-size: 1vw;
+  font-family: Founder;
+}
+
+.content h3{
+  width: 22%;
+  font-size: 3vw;
+  font-family: CardinalR;
+  text-align: center;
+  font-weight: 400;
+}
+
+.content .btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7vw;
+  height: 2vw;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #0d0d0d;
+  font-family: Founder;
+}
+
+.content h2{
+  font-size: 20vw;
+  font-family: Founder;
+}
