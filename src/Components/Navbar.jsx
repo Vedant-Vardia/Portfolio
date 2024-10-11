@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React from 'react'
+import { Link } from 'react-router-dom';
 import * as THREE from 'three';
 
 
@@ -19,10 +20,15 @@ const Navbar = () => {
         <div className='flex justify-between mx-20'>
         <h2 className='forum-regular text-2xl'><span className='text-[#01D293]'>V</span>edant<span className='text-[#01D293]'>V</span>ardia</h2>
         <ul className='flex gap-5'>
-            <li className='h-effect relative text-l'><a href="#">Home</a></li>
-            <li className='h-effect relative text-l'><a href="#">About Me</a></li>
+            <li className='h-effect relative text-l'><Link to={"/"}>Home</Link></li>
+            <li className='h-effect relative text-l'><Link to={"/about"}>About Me</Link></li>
             <li className='h-effect relative text-l'><a href="#">Projects</a></li>
             <li className='h-effect relative text-l'><a href="#">Contact</a></li>
+        </ul>
+        <ul className='flex gap-8'>
+          <li>i</li>
+          <li>f</li>
+          <li>t</li>
         </ul>
         </div>
     </div>

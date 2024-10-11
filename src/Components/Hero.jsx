@@ -88,7 +88,7 @@ useGLTF.preload('/model/untitled.glb');
 const Hero = () => {
   return (
     <div id="comp-cont bg-[#0E1630]">
-    <div className='trig bg-[#0E1630]  h-[100vh] w-full flex relative overflow-x-hidden'>
+    <div className='trig bg-[#0E1630] h-[100vh] w-full flex relative overflow-x-hidden'>
     <div id="shifter" className='bg-[#01D293] absolute h-2 left-[19vw] top-[25vh] z-10'><h1></h1></div>
     <div id="iam" className='text absolute  raleway-600 top-[28vh] left-[19vw] z-10'>
       <h1 className='opacity-0 text-4xl text-white' id="iamt">I, am Vedant Vardia</h1>
@@ -114,7 +114,6 @@ const Hero = () => {
           <Model />
         </Canvas>
       </div>
-      
     </div>
     <Technologies />
 
